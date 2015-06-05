@@ -1,3 +1,8 @@
+package basis.I;
+/*
+ * 第一個JAVA
+ */
+
 public class javann
 {
   public static void main(String[] args)
