@@ -1,0 +1,46 @@
+﻿建構式可以定義物件建立時的初始動作，在物件不再能被任何執行緒循線參考到時，物件將被GC回收，如果你想要在物件被GC回收前，進行一些結尾動作，原則上可以定義finalize()方法。
+protected void finalize() throws Throwable
+
+finalize()其實是定義在java.lang.Object類別，所有的類別其頂層父類別一定是Object，所以其實你是在重新定義 finalize()方法。Object的finalize()什麼都沒作，其方法本體是空的。
+
+注意finalize()的方法定義，它是protected的，在重新定義時，雖然放寬finalize()的存取權限為public在語法上是可行 的，但並不建議，finalize()是由JVM在物件終結前所呼叫，不應在你的程式流程中直接呼叫finalize()方法。
+
+finalize()中可以撰寫任何程式碼，通常是用來作一些物件回收前清理資源的動作。例如在MySQL的JDBC驅動程式實作中， Connection的實作ConnectionImpl就有實作清理所有連線資源的動作，讓JVM回收Connection物件前，將所有連線相關資源 關閉：
+protected void finalize() throws Throwable {
+    cleanup(null);
+    super.finalize();
+}
+
+finalize()中可以丟出例外，如果例外發生，則當中的流 程終止，不過例外丟出finalize()方法後並不會 被處理，而是直接被JVM忽略。
+
+由於JVM回收物件的時機無法掌握，所以 finalize()被執行的時機也就不一定。如果你有一些立即性要清理的資源，並不適合撰寫在finalize()中。
+
+如果要建議執行GC， 是有個System.gc()方 法可以呼叫，這會建議JVM執行GC，但僅止於建議，如果JVM有更優先的執行緒必須處理，則會予以忽略。呼叫System.gc()等同於 Runtime.getRuntime().gc()。
+
+如果要建議JVM對於已決定終結的物件執行物件上的 finalize()方法，則可以呼叫System.runFinalization()，這等同 於呼叫Runtime.getRuntime().runFinalization ()。
+
+不過，一般不建議自行於程式碼中呼叫System.gc()或System.runFinalization()方法，而由JVM自己的GC演算法自行決 定，以免干擾程式的執行效能，因為在執行GC時，程式本身所產生的執行緒是處於停止狀態，不正確的頻率呼叫System.gc ()或System.runFinalization()方法，反而會干擾效能。
+
+一個物件的finalize()方法只會被 JVM執行一次，如果JVM決定執行finalize()方法了，而你因故在finalize()中，將物件傳遞出去給另一個 執行緒參考了，則物件不會被回收，若該物件將來不再能被任何執行緒循序參考到，回收前亦不會再執 行finalize()方法。例如以下的程式可觀察物件的finalize()只會執行一次：
+public class Some {
+    static Some s;
+    protected void finalize() throws Throwable {
+        System.out.println("執行finalize()了");
+        s = this;
+    }
+    public static void main(String[] args) throws Exception {
+        Some some = new Some();
+        some = null;
+        System.gc();
+        Thread.sleep(10000);
+        System.out.println(Some.s);
+        Some.s = null;
+        System.gc();
+        Thread.sleep(10000);
+        System.out.println(Some.s);
+    }
+}
+
+finalize()不等同於C++中的解構式（Destructior），C++中的解構式會在呼叫delete時立即執行，但finalize()的 執行時機是無法確定的。
+
+事實上，並不建議重新定義finalize()方法，如果你無法掌握，最好忘了它的存在。

@@ -5,7 +5,6 @@ package com.TryCatchFamily;
  *	try{}catch(){}finally{}	先進行catch錯誤捕捉且不管是否有例外也要執行finally區塊
  */
 
-
 class TryCatchFinallySample {
 
 	public static void main(String[] args) {
