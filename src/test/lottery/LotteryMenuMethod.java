@@ -5,6 +5,7 @@ import org.magiclen.guessnumber.Player;
 
 /**
  * 清單(Menu)所搭配連結的方法
+ * 
  * @author Allan
  */
 public class LotteryMenuMethod {
@@ -13,11 +14,36 @@ public class LotteryMenuMethod {
 	 */
 	public static int methods(int index) {
 		/**
-		 * 宣告變數參考至 Player
+		 * 宣告變數
 		 */
-		Plaayer com, user;
-		Player coms[] = new ComputerPlayer[2];
+		
+
+
+		/**
+		 * 選擇要執行的方法
+		 */
+		switch (index) {
+		case 1:// 大樂透
+			break;
+		case 2:// 今彩539
+			break;
+		case 3://
+			break;
+		case 4:// 玩法說明
+			break;
+
+		case 5: // 離開選單
+			System.out.print(LotteryStringClass.SHOW_EXIT_MENU);
+			if (Tools.YorN()) {
+				System.out.printf(LotteryStringClass.SHOW_EXIT,
+						LotteryStringClass.userName);// 顯示結束訊息
+				return 0;
+			} else {
+				System.out.println(LotteryStringClass.SHOW_WELCOME_BACK);
+			}
+		}
+		LotteryMenu.show();// 顯示選單
+		return 0;
 	}
 
-	
 }
