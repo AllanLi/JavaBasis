@@ -19,14 +19,13 @@ public class LotteryMenuMethod {
 		int numberRange ;//數字範圍
 		int numberAmount;//數字數量
 
-
 		/**
 		 * 選擇要執行的方法
 		 */
 		switch (index) {
 		case 1:// 大樂透
 			numberRange  = 49;
-			numberAmount = 6;			
+			numberAmount = 6;
 			LotteryGenerate.numberRandom(numberRange,numberAmount);
 			break;
 		case 2:// 今彩539
