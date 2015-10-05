@@ -18,6 +18,7 @@ public class LotteryMenuMethod {
 		 */
 		int numberRange ;//數字範圍
 		int numberAmount;//數字數量
+		String B;
 
 		/**
 		 * 選擇要執行的方法
@@ -27,19 +28,33 @@ public class LotteryMenuMethod {
 			numberRange  = 49;
 			numberAmount = 6;
 			System.out.print(LotteryStringClass.SHOW_GAME_BIG_LOTTERY);
-			LotteryGenerate.numberRandom(numberRange,numberAmount);
+			B = LotteryGenerate.numberRandom(numberRange,numberAmount);
+
+			System.out.println("§");
+			System.out.println("§ 號碼: " + B);
+			System.out.print("§");
+			System.out.println();
+			
 			break;
 		case 2:// 今彩539
 			numberRange  = 39;
 			numberAmount = 5;
 			System.out.print(LotteryStringClass.SHOW_GAME_WONDERFUL_539);
-			LotteryGenerate.numberRandom(numberRange,numberAmount);
+			B = LotteryGenerate.numberRandom(numberRange,numberAmount);
+			System.out.println("§");
+			System.out.println("§ 號碼: " + B);
+			System.out.print("§");
+			System.out.println();
 			break;
 		case 3:// 大福彩
 			numberRange  = 40;
 			numberAmount = 7;
 			System.out.print(LotteryStringClass.SHOW_GAME_BIG_BLISS);
-			LotteryGenerate.numberRandom(numberRange,numberAmount);
+			B = LotteryGenerate.numberRandom(numberRange,numberAmount);
+			System.out.println("§");
+			System.out.println("§ 號碼: " + B);
+			System.out.print("§");
+			System.out.println();
 			break;
 		case 4:// 玩法說明
 			break;

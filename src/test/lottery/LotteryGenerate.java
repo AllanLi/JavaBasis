@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LotteryGenerate {
 
-	public static void numberRandom(int numberRange, int numberAmount) {
+	public static String numberRandom(int numberRange, int numberAmount) {
 		boolean[] numberStatus = new boolean[numberRange + 1];// 將 numberRange
 																// 數字範圍產生為一陣列並以
 																// boolean 型態紀錄
@@ -31,10 +31,11 @@ public class LotteryGenerate {
 			b = b + formatAns + ",";
 		}
 		b = b.substring(0, b.length() - 1);// 將最後的, 去除
-		System.out.println("§");
-		System.out.println("§ 號碼: " + b);
-		System.out.print("§");
-		System.out.println();
+//		System.out.println("§");
+//		System.out.println("§ 號碼: " + b);
+//		System.out.print("§");
+//		System.out.println();
+		return b;
 	}
 
 }
