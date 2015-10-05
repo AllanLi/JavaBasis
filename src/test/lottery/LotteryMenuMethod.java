@@ -26,14 +26,20 @@ public class LotteryMenuMethod {
 		case 1:// 大樂透
 			numberRange  = 49;
 			numberAmount = 6;
+			System.out.print(LotteryStringClass.SHOW_GAME_BIG_LOTTERY);
 			LotteryGenerate.numberRandom(numberRange,numberAmount);
 			break;
 		case 2:// 今彩539
 			numberRange  = 39;
-			numberAmount = 5;			
+			numberAmount = 5;
+			System.out.print(LotteryStringClass.SHOW_GAME_WONDERFUL_539);
 			LotteryGenerate.numberRandom(numberRange,numberAmount);
 			break;
-		case 3://
+		case 3:// 大福彩
+			numberRange  = 40;
+			numberAmount = 7;
+			System.out.print(LotteryStringClass.SHOW_GAME_BIG_BLISS);
+			LotteryGenerate.numberRandom(numberRange,numberAmount);
 			break;
 		case 4:// 玩法說明
 			break;
