@@ -1,4 +1,4 @@
-package testPaper.Bank.TS;
+package testPaper.TS;
 /*	2.
  * 	ANS:1,2
  */

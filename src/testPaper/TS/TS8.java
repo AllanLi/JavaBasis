@@ -1,4 +1,4 @@
-package testPaper.Bank.TS;
+package testPaper.TS;
 /*	8.
  * 	ANS:3000毫秒後印出 sleep
  */

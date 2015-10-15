@@ -1,4 +1,4 @@
-package testPaper.Bank.TS;
+package testPaper.TS;
 /*	3.
  * 	ANS:compilation m3() 
  */
