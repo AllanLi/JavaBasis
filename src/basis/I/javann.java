@@ -1,6 +1,7 @@
 package basis.I;
 /*
  * 第一個JAVA
+ * 九九乘法
  */
 
 public class javann
