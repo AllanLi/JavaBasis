@@ -2,6 +2,11 @@ package database.I;
 
 import java.sql.*;
 
+/*
+ * 資料庫驅動
+ * 要新增 mysql-connector 的 jar 檔
+ */
+
 public class DBDriver {
 	// private final String driver = "oracle.jdbc.driver.OracleDriver";
 	private final String driver = "com.mysql.jdbc.Driver";
@@ -12,9 +17,9 @@ public class DBDriver {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			conn.setAutoCommit(false);
-//			if(conn != null && !conn.isClosed()){
-//				System.out.println("資料庫連線成功.");
-//			}
+			if(conn != null && !conn.isClosed()){
+				System.out.println("資料庫連線成功.");
+			}
 		}catch (ClassNotFoundException e1){
 			System.out.println("找不到連線類別檔案.");
 		}catch (SQLException e2){
